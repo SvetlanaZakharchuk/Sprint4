@@ -63,7 +63,7 @@ public class PersonInfo {
         driver.findElement(buttonNext).click();
     }
     //собиарем все методы для заполнения полей в один
-    public void FillPersonInfo(String name, String surname, String adress, String phoneNumber){
+    public void fillPersonInfo(String name, String surname, String adress, String phoneNumber){
         inputName(name);
         inputSurname(surname);
         inputAdress(adress);
