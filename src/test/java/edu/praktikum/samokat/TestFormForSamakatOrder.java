@@ -66,7 +66,7 @@ public class TestFormForSamakatOrder extends InitAndQuitTestClass{
         CheckReadyOrder checkReadyOrder = new CheckReadyOrder(driver);
         checkReadyOrder.clickButtonYes();
         //проверяем, что заказ сформирован
-        assertEquals(checkReadyOrder.isOrderReadyOpen(), "Заказ оформлен");
+        assertEquals(LOOK_UP_STATUS, checkReadyOrder.isOrderReadyOpen());
     }
 
 
@@ -92,7 +92,7 @@ public class TestFormForSamakatOrder extends InitAndQuitTestClass{
         CheckReadyOrder checkReadyOrder = new CheckReadyOrder(driver);
         checkReadyOrder.clickButtonYes();
         //проверяем, что заказ оформлен
-        assertEquals(checkReadyOrder.isOrderReadyOpen(), "Заказ оформлен");
+        assertEquals(LOOK_UP_STATUS, checkReadyOrder.isOrderReadyOpen());
     }
 
 /*    @After
