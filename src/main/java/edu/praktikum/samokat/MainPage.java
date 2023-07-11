@@ -51,10 +51,9 @@ public class MainPage {
         this.driver = driver;
     }
     //открываем браузер
-    public void openUrl(){
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
-    }
+   public void openUrl(String current_url){
+        driver.get(current_url);
+       
     //принять куки
     public void takeCookie(){
         driver.findElement(cookieButton).click();
