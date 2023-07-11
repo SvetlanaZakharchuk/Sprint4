@@ -24,8 +24,9 @@ public class OpenOrderForm {
 
     //методы
     //открываем страницу
-    public void open(){
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+  public void open(String current_url){
+
+        driver.get(current_url);
 
     }
     //принимаем куки
