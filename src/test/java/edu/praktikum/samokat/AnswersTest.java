@@ -2,22 +2,15 @@
 Тебе нужно проверить: когда нажимаешь на стрелочку,
 открывается соответствующий текст.*/
 
-package edu.praktikium.samokat;
+package edu.praktikum.samokat;
 
-import edu.praktikum.samokat.MainPage;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.concurrent.TimeUnit;
 
-public class AnswersTest {
-    private WebDriver driver;
-
+public class AnswersTest extends InitAndQuitTestClass{
+    private static final String URL = "https://qa-scooter.praktikum-services.ru/";
+    
     private static final String ANSWER1 = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
     private static final String ANSWER2 = "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.";
     private static final String ANSWER3 = "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.";
@@ -29,36 +22,87 @@ public class AnswersTest {
 
 
 
-    @Before
+/*    @Before
     public void SetUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
+*/
 
+  @Test
+    public void checkFirstAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+        //проверяем вопрос 1
+        Assert.assertEquals(ANSWER1, mainPage.getAnswerOne());
+    }
 
     @Test
-    public void checkAllAnswers(){
+    public void checkSecondAnswer() {
         MainPage mainPage = new MainPage(driver);
-        mainPage.openUrl();
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+        Assert.assertEquals(ANSWER2, mainPage.getAnswerTwo());
+    }
+    @Test
+    public void checkTherdAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+        Assert.assertEquals(ANSWER3, mainPage.getAnswerThree());
+    }
+
+    @Test
+    public void checkFourAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+        Assert.assertEquals(ANSWER4, mainPage.getAnswerFour());
+    }
+
+    @Test
+    public void checkFiveAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+        Assert.assertEquals(ANSWER5, mainPage.getAnswerFive());
+    }
+
+    @Test
+    public void checkSixAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
         mainPage.takeCookie();
 
-        //проверяем вопрос 1
-        Assert.assertEquals(mainPage.getAnswerOne(), ANSWER1);
-        Assert.assertEquals(mainPage.getAnswerTwo(), ANSWER2);
-        Assert.assertEquals(mainPage.getAnswerThree(), ANSWER3);
-        Assert.assertEquals(mainPage.getAnswerFour(), ANSWER4);
-        Assert.assertEquals(mainPage.getAnswerFive(), ANSWER5);
-        Assert.assertEquals(mainPage.getAnswerSix(), ANSWER6);
-        Assert.assertEquals(mainPage.getAnswerSeven(), ANSWER7);
-        Assert.assertEquals(mainPage.getAnswerEight(), ANSWER8);
-
+        Assert.assertEquals(ANSWER6, mainPage.getAnswerSix());
     }
 
-    @After
+    @Test
+    public void checkSevenAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+
+        Assert.assertEquals(ANSWER7, mainPage.getAnswerSeven());
+    }
+
+    @Test
+    public void checkEightAnswer() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openUrl(URL);
+        mainPage.takeCookie();
+
+        Assert.assertEquals(ANSWER8, mainPage.getAnswerEight());
+    }
+
+ 
+
+/*    @After
     public void tearsDown(){
         driver.quit();
-    }
+    }*/
 }
 
