@@ -1,30 +1,20 @@
-package edu.praktikium.samokat;
+package edu.praktikum.samokat;
 
-import edu.praktikum.samokat.CheckReadyOrder;
-import edu.praktikum.samokat.OpenOrderForm;
-import edu.praktikum.samokat.PersonInfo;
-import edu.praktikum.samokat.SamokatInfo;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 
 
 @RunWith(Parameterized.class)
-public class TestFormForSamakatOrder {
+public class TestFormForSamakatOrder extends InitAndQuitTestClass{
 
 
-    private static final String MSG = "Заказ оформлен";
-    private WebDriver driver;
+    private static final String LOOK_UP_STATUS = "Посмотреть статус";
+    private static final String URL = "https://qa-scooter.praktikum-services.ru/";
+    
     private final String name;
     private final String surname;
     private final String adress;
@@ -45,14 +35,14 @@ public class TestFormForSamakatOrder {
         };
     }
 
-    @Before
+/*    @Before
     public void SetUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-    }
+    }*/
     //проверяем заполнение формы заказа (кнопка Закзаать находится вверху страницы)
     @Test
     public void fillFormWithOrderPageInTheHeader(){
@@ -65,7 +55,7 @@ public class TestFormForSamakatOrder {
         openOrderForm.clickOrderButtonInTheHeader();
         //заполняем данные на странице "Для кого самокат"
         PersonInfo personInfo = new PersonInfo(driver);
-        personInfo.FillPersonInfo(name, surname,adress, phoneNumber);
+        personInfo.fillPersonInfo(name, surname,adress, phoneNumber);
         personInfo.clickNextButton();
         //заполняем данные на странице "Про адренду"
         SamokatInfo samokatInfo = new SamokatInfo(driver);
@@ -92,7 +82,7 @@ public class TestFormForSamakatOrder {
         openOrderForm.clickOrderButtonInThePage();
         //заполняем данные на странице "Для кого самокат"
         PersonInfo personInfo = new PersonInfo(driver);
-        personInfo.FillPersonInfo(name, surname,adress, phoneNumber);
+        personInfo.fillPersonInfo(name, surname,adress, phoneNumber);
         personInfo.clickNextButton();
         //заполняем данные на странице "Про самокат"
         SamokatInfo samokatInfo = new SamokatInfo(driver);
@@ -105,10 +95,10 @@ public class TestFormForSamakatOrder {
         assertEquals(checkReadyOrder.isOrderReadyOpen(), "Заказ оформлен");
     }
 
-    @After
+/*    @After
     public void tearsDown(){
         driver.quit();
-    }
+    }*/
 
 
 }
