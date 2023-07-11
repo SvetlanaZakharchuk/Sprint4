@@ -23,7 +23,6 @@ public class CheckReadyOrder {
 
     //нажимаем кнопку "Да"
     public void clickButtonYes(){
-        driver.findElement(buttonYes).isEnabled();
         driver.findElement(buttonYes).click();
     }
 
